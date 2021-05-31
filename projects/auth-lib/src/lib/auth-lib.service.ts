@@ -11,7 +11,9 @@ export class AuthLibService {
     return this.userName;
   }
 
-  constructor() { }
+  constructor() {
+    console.log('AuthLibService');
+  }
 
   public login(userName: string, password: string): void {
     // Authentication for **honest** users TM. (c) Manfred Steyer

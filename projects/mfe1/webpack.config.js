@@ -26,16 +26,18 @@ module.exports = {
       
         // For remotes (please adjust)
         name: "mfe1",
-        filename: "remoteEntry.js",  // 2-3K w/ Meta Data
+        library: { type: "var", name: "mfe1" },
+        filename: "remoteEntry.js",
         exposes: {
             './Module': './projects/mfe1/src/app/flights/flights.module.ts',
-        },        
+            './web-components': './projects/mfe1/src/bootstrap.ts'
+        },
         shared: {
-          "@angular/core": { singleton: true, strictVersion: true, requiredVersion: '12.0.0' },
-          "@angular/common": { singleton: true, strictVersion: true, requiredVersion: '12.0.0' },
-          "@angular/router": { singleton: true, strictVersion: true, requiredVersion: '12.0.0' },
-          "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: '12.0.0' }, 
-  
+          "@angular/core": { requiredVersion: '12.0.0', strictVersion: true },
+          "@angular/common": { requiredVersion: '12.0.0', strictVersion: false },
+          "@angular/router": { requiredVersion: '12.0.0', strictVersion: true },
+          "@angular/common/http": { requiredVersion: '12.0.0', strictVersion: true }, 
+
           // Uncomment for sharing lib of an Angular CLI or Nx workspace
           ...sharedMappings.getDescriptors()
         }

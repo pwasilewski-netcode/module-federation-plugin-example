@@ -1,11 +1,16 @@
 import { AppModule } from './app/app.module';
 import { environment } from './environments/environment';
 import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
+import { enableProdMode, getPlatform } from '@angular/core';
 
-if (environment.production) {
-  enableProdMode();
+let platform = getPlatform();
+if (!platform) {
+  platform = platformBrowserDynamic();
+  if (environment.production) {
+    enableProdMode();
+  }
 }
 
-platformBrowserDynamic().bootstrapModule(AppModule)
+platform.bootstrapModule(AppModule)
+  .then(() => console.log('mfe1 loaded'))
   .catch(err => console.error(err));

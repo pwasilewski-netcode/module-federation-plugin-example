@@ -34,11 +34,12 @@
 </style>
 
 <div id="container">
-  
+    <a routerLink="..">&lt;&lt; Home</a>
+    <div>User: {{user}}</div>
     <div>
         <img src="../../../assets/angular.png" width="50">
     </div>
-    <h1>Flights</h1>
+    <h1>Flights mfe1!!!</h1>
     <div>
         <input type="text" placeholder="From">
     </div>
@@ -46,8 +47,7 @@
         <input type="text" placeholder="To">
     </div>
     <div>
+        <a routerLink="more">Show more</a>
     </div>
-    <div>
-        <ng-container #vc></ng-container>
-    </div>
+    <router-outlet></router-outlet>
 </div>
