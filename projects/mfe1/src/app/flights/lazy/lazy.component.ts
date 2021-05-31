@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PluginService } from 'shared-lib';
 
 @Component({
   selector: 'app-lazy',
@@ -6,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LazyComponent implements OnInit {
 
-  constructor() { }
+  constructor(public pluginService: PluginService) { }
 
   ngOnInit() {
   }

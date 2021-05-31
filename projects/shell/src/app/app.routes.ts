@@ -2,8 +2,8 @@ import { Route, Routes, UrlMatcher, UrlSegment } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
-import { plugins } from './plugins';
 import { loadRemoteModule } from '@angular-architects/module-federation';
+import { plugins } from 'shared-lib';
 
 export function startsWith(prefix: string): UrlMatcher {
   return (url: UrlSegment[]) => {

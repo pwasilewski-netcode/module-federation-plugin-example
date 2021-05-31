@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { LoadRemoteModuleOptions, loadRemoteModule } from '@angular-architects/module-federation';
-import { PluginOptions } from '../plugins';
+import { loadRemoteModule } from '@angular-architects/module-federation';
+import { PluginOptions } from 'shared-lib';
 
 @Component({
   template: '<div #vc></div>',

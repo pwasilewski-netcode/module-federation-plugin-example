@@ -1,6 +1,6 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Injectable } from '@angular/core';
-import { PluginOptions } from './plugins';
+import { PluginOptions, plugins } from './plugins';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +8,6 @@ import { PluginOptions } from './plugins';
 export class PluginService {
 
   constructor() {
-
   }
 
   async load(container: HTMLElement, options: PluginOptions) {
@@ -21,5 +20,19 @@ export class PluginService {
     catch(error) {
         console.error(error);
     }
+  }
+
+  getRoutes(): {path: string, name: string}[] {
+    return plugins.filter(p => !!p.path).map(p => {
+      return {
+        path: `/${p.path}`,
+        name: p.remoteName
+      }
+    });
+  }
+
+  getRoute(pluginName: string, extraParams?: string): string {
+    const plugin = plugins.find(p => !!p.path && p.remoteName.toLocaleLowerCase() === pluginName.toLocaleLowerCase());
+    return `/${plugin.path}${extraParams ?? ''}`;
   }
 }

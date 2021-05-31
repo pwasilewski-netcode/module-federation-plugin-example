@@ -1,8 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthLibService } from 'auth-lib';
-import { PluginService } from '../plugin.service';
-import { plugins } from '../plugins';
+import { plugins, PluginService } from 'shared-lib';
 
 @Component({
   selector: 'app-home',
