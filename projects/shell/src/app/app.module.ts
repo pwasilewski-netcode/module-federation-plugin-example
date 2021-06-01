@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { ApplicationRef, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, NgModule } from '@angular/core';
+import { Router, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { APP_ROUTES } from './app.routes';
@@ -9,13 +9,12 @@ import { AuthLibModule } from 'auth-lib';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { PluginWrapper } from './utils/plugin-wrapper';
-// import { SharedLibModule } from 'projects/shared-lib/src/public-api';
+import { PluginService } from 'shared-lib';
 
 @NgModule({
   imports: [
     BrowserModule,
     AuthLibModule,
-    // SharedLibModule,
     HttpClientModule,
     FormsModule,
     RouterModule.forRoot(APP_ROUTES)
@@ -27,7 +26,13 @@ import { PluginWrapper } from './utils/plugin-wrapper';
     PluginWrapper,
   ],
   providers: [],
-  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule implements DoBootstrap {
+  constructor(private pluginService: PluginService, private router: Router) { }
+
+  async ngDoBootstrap(appRef: ApplicationRef) {
+    await this.pluginService.initRoutes(this.router);
+    appRef.bootstrap(AppComponent);
+  }
+}

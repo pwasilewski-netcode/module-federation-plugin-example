@@ -1,7 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthLibService } from 'auth-lib';
-import { plugins, PluginService } from 'shared-lib';
+import { PluginService } from 'shared-lib';
 
 @Component({
   selector: 'app-home',
@@ -18,10 +18,9 @@ export class HomeComponent implements OnInit {
   constructor(private authService: AuthLibService, private pluginService: PluginService, private router: Router) { }
 
   async ngOnInit() {
-    for (let p of plugins.filter(p => !p.ngModuleName)) {
+    for (let p of this.pluginService.getPlugins().filter(p => !p.ngModuleName)) {
       await this.pluginService.load(this.container.nativeElement, p);
     }
-    console.log(this.router);
   }
 
   login() {

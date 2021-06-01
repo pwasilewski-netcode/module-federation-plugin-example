@@ -5,7 +5,7 @@ const path = require("path");
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
   path.join(__dirname, '../../tsconfig.json'),
-  ['auth-lib']
+  ['auth-lib', 'shared-lib']
 );
 
 module.exports = {
