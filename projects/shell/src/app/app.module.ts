@@ -8,8 +8,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { AuthLibModule } from 'auth-lib';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
-import { PluginWrapper } from './utils/plugin-wrapper';
 import { PluginService } from 'shared-lib';
+import { PluginHostComponent } from './utils/plugin-host.component';
 
 @NgModule({
   imports: [
@@ -23,7 +23,7 @@ import { PluginService } from 'shared-lib';
     AppComponent,
     HomeComponent,
     NotFoundComponent,
-    PluginWrapper,
+    PluginHostComponent,
   ],
   providers: [],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

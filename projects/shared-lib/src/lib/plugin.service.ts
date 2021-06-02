@@ -8,6 +8,7 @@ export type PluginOptions = LoadRemoteModuleOptions & {
   ngModuleName?: string;
   elementName?: string;
   path?: string;
+  outlet?: string;
 };
 
 @Injectable({
@@ -17,12 +18,13 @@ export class PluginService {
 
   private plugins: PluginOptions[] = [];
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, ) { }
 
   async initRoutes(router: Router) {
     this.plugins = await this.http.get<PluginOptions[]>('http://localhost:5000/assets/plugins.json').toPromise();
     router.config.splice(router.config.length - 1, 0, ...this.toRoutes(this.plugins));
     router.resetConfig(router.config);
+    console.log(router.config);
   }
 
   async load(container: HTMLElement, options: PluginOptions) {
@@ -55,10 +57,9 @@ export class PluginService {
   }
 
   toRoutes(plugins: PluginOptions[]): Routes {
-    return plugins.map(p => {
+    return plugins.filter(p => !p.outlet).map(p => {
       if (!!p.ngModuleName) {
         return <Route> {
-          // matcher: startsWith(p.path),
           path: p.path,
           loadChildren: () => {
             return loadRemoteModule({
@@ -70,7 +71,6 @@ export class PluginService {
         };
       }
       return <Route> {
-        // matcher: startsWith(p.path),
         path: p.path,
         component: WebComponentWrapper,
         data: <WebComponentWrapperOptions> {

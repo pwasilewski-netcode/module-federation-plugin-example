@@ -3,6 +3,17 @@
 <input placeholder="User Name" [(ngModel)]="userName">
 <button (click)="login()">Login!</button>
 
-<!-- <router-outlet></router-outlet> -->
+<!-- <router-outlet name="mfe1"></router-outlet>
+
+<router-outlet name="mfe2"></router-outlet> -->
+
+<!-- <ng-container *ngFor="let p of pluginOutlets">
+  <router-outlet [name]="p"></router-outlet>
+</ng-container> -->
+
+<!-- <ng-container #ngContainer></ng-container> -->
+
+<router-outlet name="mfe1"></router-outlet>
+<router-outlet name="mfe2"></router-outlet>
 
 <div class="container" #container></div>
