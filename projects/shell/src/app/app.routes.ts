@@ -9,7 +9,7 @@ export const APP_ROUTES: Routes = [
     path: 'home',
     component: HomeComponent,
     children: [
-      { path: '', redirectTo: 'mfe1', pathMatch: 'full', outlet: 'mfe1' },
+      // { path: '', redirectTo: 'mfe1', pathMatch: 'full', outlet: 'mfe1' },
       {
         path: 'mfe1',
         outlet: 'mfe1',
@@ -21,7 +21,7 @@ export const APP_ROUTES: Routes = [
           }).then(m => m['FlightsModule']);
         }
       },
-      { path: '', redirectTo: 'mfe2', pathMatch: 'full', outlet: 'mfe2' },
+      // { path: '', redirectTo: 'mfe2', pathMatch: 'full', outlet: 'mfe2' },
       {
         path: 'mfe2',
         outlet: 'mfe2',

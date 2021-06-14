@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { PluginService } from 'shared-lib';
+import { PluginService } from 'plugin-lib';
 
 @Component({
   selector: 'app-lazy',

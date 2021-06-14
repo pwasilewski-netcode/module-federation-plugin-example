@@ -71,8 +71,7 @@
 							"browserTarget": "mfe1:build:production",
 							"extraWebpackConfig": "projects/mfe1/webpack.prod.config.js"
 						}
-					},
-					"defaultConfiguration": "production"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
@@ -193,8 +192,7 @@
 							"browserTarget": "mfe2:build:production",
 							"extraWebpackConfig": "projects/mfe2/webpack.prod.config.js"
 						}
-					},
-					"defaultConfiguration": "production"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
@@ -315,8 +313,7 @@
 							"browserTarget": "shell:build:production",
 							"extraWebpackConfig": "projects/shell/webpack.prod.config.js"
 						}
-					},
-					"defaultConfiguration": "production"
+					}
 				},
 				"extract-i18n": {
 					"builder": "@angular-devkit/build-angular:extract-i18n",
@@ -443,6 +440,34 @@
 						"exclude": [
 							"**/node_modules/**"
 						]
+					}
+				}
+			}
+		},
+		"plugin-lib": {
+			"projectType": "library",
+			"root": "projects/plugin-lib",
+			"sourceRoot": "projects/plugin-lib/src",
+			"prefix": "lib",
+			"architect": {
+				"build": {
+					"builder": "@angular-devkit/build-angular:ng-packagr",
+					"options": {
+            "tsConfig": "projects/plugin-lib/tsconfig.lib.json",
+						"project": "projects/plugin-lib/ng-package.json"
+					},
+					"configurations": {
+						"production": {
+							"tsConfig": "projects/plugin-lib/tsconfig.lib.prod.json"
+						}
+					}
+				},
+				"test": {
+					"builder": "@angular-devkit/build-angular:karma",
+					"options": {
+						"main": "projects/plugin-lib/src/test.ts",
+						"tsConfig": "projects/plugin-lib/tsconfig.spec.json",
+						"karmaConfig": "projects/plugin-lib/karma.conf.js"
 					}
 				}
 			}

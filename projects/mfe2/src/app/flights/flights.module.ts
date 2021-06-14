@@ -6,12 +6,14 @@ import { FLIGHTS_ROUTES } from './flights.routes';
 import { AuthLibModule } from 'auth-lib';
 import { SharedLibModule } from 'shared-lib';
 import { LazyComponent } from './lazy/lazy.component';
+import { PluginsLibModule } from 'plugin-lib';
 
 @NgModule({
   imports: [
     CommonModule,
     AuthLibModule,
     SharedLibModule,
+    PluginsLibModule,
     RouterModule.forChild(FLIGHTS_ROUTES)
   ],
   declarations: [

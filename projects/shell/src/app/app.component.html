@@ -1,15 +1,9 @@
 <ul>
     <li><img src="../assets/angular.png" width="50"></li>
     <li><a routerLink="/">Home</a></li>
-    <li *ngFor="let route of pluginService.getRoutes()">
-        <a [routerLink]="route.path">{{route.name}}</a>
+    <li *ngFor="let plugin of pluginService.forScope('menu')">
+        <a [routerLink]="'/' + plugin.remoteName">{{plugin.remoteName}}</a>
     </li>
-    <!-- 
-    <li><a routerLink="/mfe1">Mfe1</a></li>
-    <li><a routerLink="/mfe2">Mfe2</a></li>
-    <li><a routerLink="/react">React</a></li>
-    <li><a routerLink="/angular1">Angular 1</a></li>
-    <li><a routerLink="/angular2">Angular 2</a></li> -->
 </ul>
 
 <router-outlet></router-outlet>
