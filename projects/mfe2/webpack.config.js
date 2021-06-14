@@ -29,8 +29,8 @@ module.exports = {
         library: { type: "var", name: "mfe2" },
         filename: "remoteEntry.js",
         exposes: {  
-            './Module': './projects/mfe2/src/app/flights/flights.module.ts',
-            './web-components': './projects/mfe2/src/bootstrap.ts'
+          './Module': './projects/mfe2/src/app/flights/flights.module.ts',
+          './web-components': './projects/mfe2/src/bootstrap.ts'
         },
         shared: {
           "@angular/core": { requiredVersion: '^12.0.0', strictVersion: true },
