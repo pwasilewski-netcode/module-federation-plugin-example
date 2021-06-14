@@ -30,10 +30,10 @@ module.exports = {
       },
 
       shared: {
-        "@angular/core": { requiredVersion: '12.0.0', strictVersion: true },
-        "@angular/common": { requiredVersion: '12.0.0', strictVersion: false },
-        "@angular/router": { requiredVersion: '12.0.0', strictVersion: true },
-        "@angular/common/http": { requiredVersion: '12.0.0', strictVersion: true }, 
+        "@angular/core": { requiredVersion: '^12.0.0', strictVersion: true },
+        "@angular/common": { requiredVersion: '^12.0.0', strictVersion: false },
+        "@angular/router": { requiredVersion: '^12.0.0', strictVersion: true },
+        "@angular/common/http": { requiredVersion: '^12.0.0', strictVersion: true }, 
 
         // Uncomment for sharing lib of an Angular CLI or Nx workspace
         ...sharedMappings.getDescriptors()
