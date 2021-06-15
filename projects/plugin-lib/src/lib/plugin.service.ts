@@ -34,6 +34,7 @@ export class PluginService {
     const routes = this.toRoutes(this.forScope('menu'));
     this.router.config.splice(this.router.config.length - 1, 0, ...routes);
     this.router.resetConfig(this.router.config);
+    console.log(this.router);
   }
 
   getLazyRoutes(scope: PluginScope): Routes {
@@ -45,7 +46,11 @@ export class PluginService {
           path: plugin.remoteName,
           outlet: plugin.remoteName,
           loadChildren: () => {
-            return loadRemoteModule(plugin).then(m => m[plugin.ngModuleName]);
+            return loadRemoteModule({
+              remoteEntry: plugin.remoteEntry,
+              remoteName: plugin.remoteName,
+              exposedModule: plugin.exposedModule
+            }).then(m => m[plugin.ngModuleName]);
           }
         }
       );
@@ -66,6 +71,7 @@ export class PluginService {
     return {
       path: plugin.remoteName,
       loadChildren: () => {
+        console.log('LAZY LOADING', plugin);
         return loadRemoteModule({
           remoteEntry: plugin.remoteEntry,
           remoteName: plugin.remoteName,

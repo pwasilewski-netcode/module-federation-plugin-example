@@ -1,7 +1,6 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { AuthLibService } from 'auth-lib';
-import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
 import { PluginService } from 'plugin-lib';
 
 @Component({
@@ -11,10 +10,9 @@ import { PluginService } from 'plugin-lib';
 export class AppComponent implements OnInit {
   title = 'shell';
 
-  constructor(private service: AuthLibService, http: HttpClient, public pluginService: PluginService, private router: Router) {
+  constructor(private service: AuthLibService, http: HttpClient, public pluginService: PluginService) {
     this.service.login('Max', null);
     console.debug('http', http);
-    // this.pluginService.initRoutes(this.router);
   }
 
   ngOnInit() {
