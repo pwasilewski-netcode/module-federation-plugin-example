@@ -4,14 +4,12 @@ import { PluginOutletDirective } from './plugin-outlet.directive';
 import { RouterModule } from '@angular/router';
 import { PluginWrapperComponent } from './plugin-wrapper.component';
 import { CommonModule } from '@angular/common';
-import { EmptyComponent } from './empty.component';
 
 @NgModule({
   declarations: [
     PluginsContainerComponent,
     PluginOutletDirective,
-    PluginWrapperComponent,
-    EmptyComponent
+    PluginWrapperComponent
   ],
   imports: [
     CommonModule,
@@ -20,8 +18,7 @@ import { EmptyComponent } from './empty.component';
   exports: [
     PluginsContainerComponent,
     PluginOutletDirective,
-    PluginWrapperComponent,
-    EmptyComponent
+    PluginWrapperComponent
   ]
 })
 export class PluginsLibModule { }

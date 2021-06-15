@@ -1,5 +1,5 @@
-import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Routes } from '@angular/router';
+import { PluginRouterModule } from 'plugin-lib';
 import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 
@@ -8,32 +8,7 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    children: [
-      { path: '', redirectTo: 'mfe1', pathMatch: 'full', outlet: 'mfe1' },
-      {
-        path: 'mfe1',
-        outlet: 'mfe1',
-        loadChildren: () => {
-          return loadRemoteModule({
-            remoteEntry: 'http://localhost:3000/remoteEntry.js',
-            remoteName: 'mfe1',
-            exposedModule: './Module'
-          }).then(m => m['FlightsModule']);
-        }
-      },
-      { path: '', redirectTo: 'mfe2', pathMatch: 'full', outlet: 'mfe2' },
-      {
-        path: 'mfe2',
-        outlet: 'mfe2',
-        loadChildren: () => {
-          return loadRemoteModule({
-            remoteEntry: 'http://localhost:4000/remoteEntry.js',
-            remoteName: 'mfe2',
-            exposedModule: './Module'
-          }).then(m => m['FlightsModule']);
-        }
-      }
-    ]
+    loadChildren: () => PluginRouterModule.forPlugin('home')
   },
   // ...plugins,
   {

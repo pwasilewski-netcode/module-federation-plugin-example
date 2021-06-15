@@ -9,8 +9,6 @@ export type PluginOptions = LoadRemoteModuleOptions & {
   ngModuleName?: string;
   elementName?: string;
   scopes: PluginScope[];
-  // path?: string;
-  // outlet?: string;
 };
 
 @Injectable({
@@ -20,7 +18,9 @@ export class PluginService {
 
   private plugins: PluginOptions[] = [];
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) {
+    console.log('PluginService');
+  }
 
   init(plugins: PluginOptions[]) {
     this.plugins = plugins;
@@ -31,21 +31,27 @@ export class PluginService {
   }
 
   registerRoutes() {
-    console.log('REGISTER', this.router);
     const routes = this.toRoutes(this.forScope('menu'));
     this.router.config.splice(this.router.config.length - 1, 0, ...routes);
     this.router.resetConfig(this.router.config);
-    // console.log(router.config);
   }
 
-  // getRoutesPaths(): {path: string, name: string}[] {
-  //   return this.plugins.filter(p => !!p.path).map(p => {
-  //     return {
-  //       path: `/${p.path}`,
-  //       name: p.remoteName
-  //     }
-  //   });
-  // }
+  getLazyRoutes(scope: PluginScope): Routes {
+    const routes: Routes = [];
+    for (const plugin of this.forScope(scope).filter(p => !!p.ngModuleName)) {
+      routes.push(
+        { path: '', redirectTo: plugin.remoteName, pathMatch: 'full', outlet: plugin.remoteName },
+        {
+          path: plugin.remoteName,
+          outlet: plugin.remoteName,
+          loadChildren: () => {
+            return loadRemoteModule(plugin).then(m => m[plugin.ngModuleName]);
+          }
+        }
+      );
+    }
+    return routes;
+  }
 
   getRouteUrl(pluginName: string, extraParams?: string): string {
     const plugin = this.plugins.find(p => p.scopes.includes('menu') && p.remoteName.toLocaleLowerCase() === pluginName.toLocaleLowerCase());
@@ -60,7 +66,6 @@ export class PluginService {
     return {
       path: plugin.remoteName,
       loadChildren: () => {
-        // console.log('ROUTE', plugin.remoteName);
         return loadRemoteModule({
           remoteEntry: plugin.remoteEntry,
           remoteName: plugin.remoteName,

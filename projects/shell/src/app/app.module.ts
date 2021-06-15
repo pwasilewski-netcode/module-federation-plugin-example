@@ -1,8 +1,8 @@
 import { HttpClientModule } from '@angular/common/http';
-import { ApplicationRef, APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, DoBootstrap, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
-import { Router, RouterEvent, RouterModule } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { AuthLibModule } from 'auth-lib';
 import { PluginService, PluginsLibModule } from 'plugin-lib';
 import { AppInitService } from './app-init.service';
@@ -35,19 +35,8 @@ import { NotFoundComponent } from './not-found/not-found.component';
       multi: true
     }
   ],
+  bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule implements DoBootstrap {
-  constructor(private pluginService: PluginService, private router: Router) {
-    router.events.subscribe((e: RouterEvent) => {
-      // console.log('🥸', e);
-    })
-  }
-
-  ngDoBootstrap(appRef: ApplicationRef) {
-    // await this.pluginService.initRoutes(this.router);
-    // this.pluginService.registerRoutes();
-    appRef.bootstrap(AppComponent);
-  }
-}
+export class AppModule { }
 
