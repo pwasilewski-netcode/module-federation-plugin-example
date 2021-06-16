@@ -5,7 +5,7 @@
     "exposedModule": "./web-components",
     "elementName": "react-element",
     "link": "react",
-    "scopes": ["menu"]
+    "scopes": ["home"]
   },
   {
     "remoteEntry": "http://localhost:3000/remoteEntry.js",
@@ -13,7 +13,7 @@
     "exposedModule": "./Module",
     "ngModuleName": "FlightsModule",
     "link": "mfe1",
-    "scopes": ["home"]
+    "scopes": ["home", "menu"]
   },
   {
     "remoteEntry": "http://localhost:4000/remoteEntry.js",
@@ -21,7 +21,7 @@
     "exposedModule": "./Module",
     "ngModuleName": "FlightsModule",
     "link": "mfe2",
-    "scopes": ["menu", "home"]
+    "scopes": ["home"]
   },
   {
     "remoteEntry": "https://mango-field-0d0778c10.azurestaticapps.net/remoteEntry.js",
@@ -29,7 +29,7 @@
     "exposedModule": "./web-components",
     "elementName": "vue-element",
     "link": "vue",
-    "scopes": ["menu", "home"]
+    "scopes": ["menu"]
   },
   {
     "remoteEntry": "https://nice-grass-018f7d910.azurestaticapps.net/remoteEntry.js",
