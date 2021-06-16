@@ -1,5 +1,5 @@
 import { loadRemoteModule, LoadRemoteModuleOptions } from '@angular-architects/module-federation';
-import { WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
+import { startsWith, WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
 import { Injectable } from '@angular/core';
 import { Route, Router, Routes } from '@angular/router';
 
@@ -8,6 +8,7 @@ export type PluginScope = 'menu' | 'home';
 export type PluginOptions = LoadRemoteModuleOptions & {
   ngModuleName?: string;
   elementName?: string;
+  link: string;
   scopes: PluginScope[];
 };
 
@@ -34,7 +35,6 @@ export class PluginService {
     const routes = this.toRoutes(this.forScope('menu'));
     this.router.config.splice(this.router.config.length - 1, 0, ...routes);
     this.router.resetConfig(this.router.config);
-    console.log(this.router);
   }
 
   getLazyRoutes(scope: PluginScope): Routes {
@@ -60,7 +60,7 @@ export class PluginService {
 
   getRouteUrl(pluginName: string, extraParams?: string): string {
     const plugin = this.plugins.find(p => p.scopes.includes('menu') && p.remoteName.toLocaleLowerCase() === pluginName.toLocaleLowerCase());
-    return `/${plugin.remoteName}${extraParams ?? ''}`;
+    return `/${plugin.link}${extraParams ?? ''}`;
   }
 
   private toRoutes(plugins: PluginOptions[]): Routes {
@@ -71,7 +71,6 @@ export class PluginService {
     return {
       path: plugin.remoteName,
       loadChildren: () => {
-        console.log('LAZY LOADING', plugin);
         return loadRemoteModule({
           remoteEntry: plugin.remoteEntry,
           remoteName: plugin.remoteName,
@@ -83,7 +82,7 @@ export class PluginService {
 
   private createComponentRoute(plugin: PluginOptions): Route {
     return {
-      path: plugin.remoteName,
+      matcher: startsWith(plugin.remoteName),
       component: WebComponentWrapper,
       data: <WebComponentWrapperOptions> {
         remoteEntry: plugin.remoteEntry,

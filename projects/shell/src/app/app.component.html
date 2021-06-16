@@ -2,7 +2,7 @@
     <li><img src="../assets/angular.png" width="50"></li>
     <li><a routerLink="/">Home</a></li>
     <li *ngFor="let plugin of pluginService.forScope('menu')">
-        <a [routerLink]="'/' + plugin.remoteName">{{plugin.remoteName}}</a>
+        <a [routerLink]="'/' + plugin.link">{{plugin.remoteName}}</a>
     </li>
 </ul>
 

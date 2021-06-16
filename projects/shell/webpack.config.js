@@ -4,8 +4,8 @@ const path = require("path");
 
 const sharedMappings = new mf.SharedMappings();
 sharedMappings.register(
-  path.join(__dirname, '../../tsconfig.json'),
-  ['auth-lib', 'plugin-lib']
+  path.join(__dirname, "../../tsconfig.json"),
+  ["auth-lib", "plugin-lib"]
 );
 
 module.exports = {
@@ -15,7 +15,7 @@ module.exports = {
   },
   optimization: {
     runtimeChunk: false
-  },    
+  },
   resolve: {
     alias: {
       ...sharedMappings.getAliases(),
@@ -23,22 +23,19 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-
       // For hosts (please adjust)
       remotes: {
         // "mfe1": "mfe1@http://localhost:3000/remoteEntry.js",
       },
-
       shared: {
-        "@angular/core": { requiredVersion: '^12.0.0', strictVersion: true },
-        "@angular/common": { requiredVersion: '^12.0.0', strictVersion: false },
-        "@angular/router": { requiredVersion: '^12.0.0', strictVersion: true },
-        "@angular/common/http": { requiredVersion: '^12.0.0', strictVersion: true }, 
+        "@angular/core": { requiredVersion: "12.0.0", strictVersion: true },
+        "@angular/common": { requiredVersion: "12.0.0", strictVersion: false },
+        "@angular/common/http": { requiredVersion: "12.0.0", strictVersion: true },
+        "@angular/router": { requiredVersion: "12.0.0", strictVersion: true },
 
         // Uncomment for sharing lib of an Angular CLI or Nx workspace
         ...sharedMappings.getDescriptors()
       }
-
     }),
     // Uncomment for sharing lib of an Angular CLI or Nx workspace
     sharedMappings.getPlugin(),
