@@ -1,26 +1,26 @@
 [
   {
+    "remoteEntry": "http://localhost:5002/remoteEntry.js",
+    "remoteName": "mfe1",
+    "exposedModule": "./Module",
+    "ngModuleName": "FlightsModule",
+    "link": "mfe1",
+    "scopes": ["home"]
+  },
+  {
+    "remoteEntry": "http://localhost:5003/remoteEntry.js",
+    "remoteName": "mfe2",
+    "exposedModule": "./web-components",
+    "elementName": "mfe2-element",
+    "link": "mfe2",
+    "scopes": ["home"]
+  },
+  {
     "remoteEntry": "https://witty-wave-0a695f710.azurestaticapps.net/remoteEntry.js",
     "remoteName": "react",
     "exposedModule": "./web-components",
     "elementName": "react-element",
     "link": "react",
-    "scopes": ["home"]
-  },
-  {
-    "remoteEntry": "http://localhost:3000/remoteEntry.js",
-    "remoteName": "mfe1",
-    "exposedModule": "./Module",
-    "ngModuleName": "FlightsModule",
-    "link": "mfe1",
-    "scopes": ["home", "menu"]
-  },
-  {
-    "remoteEntry": "http://localhost:4000/remoteEntry.js",
-    "remoteName": "mfe2",
-    "exposedModule": "./Module",
-    "ngModuleName": "FlightsModule",
-    "link": "mfe2",
     "scopes": ["home"]
   },
   {
@@ -53,7 +53,7 @@
     "exposedModule": "./web-components",
     "elementName": "angular3-element",
     "link": "angular3/a",
-    "scopes": []
+    "scopes": ["menu"]
   },
   {
     "remoteEntry": "https://calm-mud-0a3ee4a10.azurestaticapps.net/remoteEntry.js",

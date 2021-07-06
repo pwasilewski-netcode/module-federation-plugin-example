@@ -9,7 +9,7 @@ export class AppInitService {
   constructor(private http: HttpClient, private pluginService: PluginService) { }
 
   init(): Observable<any> {
-    return this.http.get<PluginOptions[]>('http://localhost:5000/assets/plugins.json')
+    return this.http.get<PluginOptions[]>('http://localhost:5001/assets/plugins.json')
       .pipe(take(1), tap(o => this.pluginService.init(o)));
   }
 }

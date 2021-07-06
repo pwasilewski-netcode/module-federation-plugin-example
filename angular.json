@@ -14,12 +14,13 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
+            "aot": true,
+            
 						"outputPath": "dist/mfe1",
 						"index": "projects/mfe1/src/index.html",
 						"main": "projects/mfe1/src/main.ts",
 						"polyfills": "projects/mfe1/src/polyfills.ts",
 						"tsConfig": "projects/mfe1/tsconfig.app.json",
-						"aot": true,
 						"assets": [
 							"projects/mfe1/src/favicon.ico",
 							"projects/mfe1/src/assets"
@@ -135,12 +136,13 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
+            "aot": true,
+            
 						"outputPath": "dist/mfe2",
 						"index": "projects/mfe2/src/index.html",
 						"main": "projects/mfe2/src/main.ts",
 						"polyfills": "projects/mfe2/src/polyfills.ts",
 						"tsConfig": "projects/mfe2/tsconfig.app.json",
-						"aot": true,
 						"assets": [
 							"projects/mfe2/src/favicon.ico",
 							"projects/mfe2/src/assets"
@@ -256,12 +258,13 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
+            "aot": true,
+            
 						"outputPath": "dist/shell",
 						"index": "projects/shell/src/index.html",
 						"main": "projects/shell/src/main.ts",
 						"polyfills": "projects/shell/src/polyfills.ts",
 						"tsConfig": "projects/shell/tsconfig.app.json",
-						"aot": true,
 						"assets": [
 							"projects/shell/src/favicon.ico",
 							"projects/shell/src/assets"
