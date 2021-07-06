@@ -13,13 +13,13 @@ export type PluginOptions = LoadRemoteModuleOptions & {
 };
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'platform'
 })
 export class PluginService {
 
   private plugins: PluginOptions[] = [];
 
-  constructor(private router: Router) {
+  constructor() {
     console.log('PluginService');
   }
 
@@ -31,10 +31,10 @@ export class PluginService {
     return [...this.plugins.filter(p => p.scopes.includes(scope))];
   }
 
-  registerRoutes() {
+  registerRoutes(router: Router) {
     const routes = this.toRoutes(this.forScope('menu'));
-    this.router.config.splice(this.router.config.length - 1, 0, ...routes);
-    this.router.resetConfig(this.router.config);
+    router.config.splice(router.config.length - 1, 0, ...routes);
+    router.resetConfig(router.config);
   }
 
   getLazyRoutes(scope: PluginScope): Routes {

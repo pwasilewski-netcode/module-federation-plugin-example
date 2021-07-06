@@ -1,6 +1,6 @@
-import { shareNgZone } from '@angular-architects/module-federation-tools';
 import { HttpClient } from '@angular/common/http';
-import { Component, NgZone, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { AuthLibService } from 'auth-lib';
 import { PluginService } from 'plugin-lib';
 
@@ -11,13 +11,14 @@ import { PluginService } from 'plugin-lib';
 export class AppComponent implements OnInit {
   title = 'shell';
 
-  constructor(private service: AuthLibService, http: HttpClient, public pluginService: PluginService, ngZone: NgZone) {
-    shareNgZone(ngZone);
+  constructor(private router: Router, private service: AuthLibService,
+              http: HttpClient, public pluginService: PluginService) {
+    
     this.service.login('Max', null);
     console.debug('http', http);
   }
 
   ngOnInit() {
-    this.pluginService.registerRoutes();
+    this.pluginService.registerRoutes(this.router);
   }
 }

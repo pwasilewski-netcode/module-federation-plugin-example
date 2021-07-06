@@ -1,5 +1,6 @@
+import { shareNgZone } from '@angular-architects/module-federation-tools';
 import { HttpClientModule } from '@angular/common/http';
-import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { APP_INITIALIZER, CUSTOM_ELEMENTS_SCHEMA, NgModule, NgZone } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
@@ -38,5 +39,9 @@ import { NotFoundComponent } from './not-found/not-found.component';
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(ngZone: NgZone) {
+    shareNgZone(ngZone);
+  }
+}
 
