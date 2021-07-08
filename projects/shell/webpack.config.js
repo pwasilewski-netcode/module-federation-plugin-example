@@ -28,10 +28,10 @@ module.exports = {
         // "mfe1": "mfe1@http://localhost:3000/remoteEntry.js",
       },
       shared: {
-        "@angular/core": { requiredVersion: "12.0.0", strictVersion: true },
-        "@angular/common": { requiredVersion: "12.0.0", strictVersion: false },
-        "@angular/common/http": { requiredVersion: "12.0.0", strictVersion: true },
-        "@angular/router": { requiredVersion: "12.0.0", strictVersion: true },
+        "@angular/core": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/common": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/common/http": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/router": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
 
         // Uncomment for sharing lib of an Angular CLI or Nx workspace
         ...sharedMappings.getDescriptors()

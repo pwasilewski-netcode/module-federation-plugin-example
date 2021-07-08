@@ -32,10 +32,10 @@ module.exports = {
         "./web-components": "./projects/mfe1/src/bootstrap.ts"
       },
       shared: {
-        "@angular/core": { requiredVersion: "12.0.0" },
-        "@angular/common": { requiredVersion: "12.0.0" },
-        "@angular/common/http": { requiredVersion: "12.0.0" },
-        "@angular/router": { requiredVersion: "12.0.0" },
+        "@angular/core": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/common": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/common/http": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
+        "@angular/router": { requiredVersion: "12.0.3", strictVersion: true, singleton: true },
 
         // Uncomment for sharing lib of an Angular CLI or Nx workspace
         ...sharedMappings.getDescriptors()

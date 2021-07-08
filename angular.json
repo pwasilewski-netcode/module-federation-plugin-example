@@ -14,8 +14,8 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
-            "aot": true,
-            
+						"aot": true,
+						"optimization": false,
 						"outputPath": "dist/mfe1",
 						"index": "projects/mfe1/src/index.html",
 						"main": "projects/mfe1/src/main.ts",
@@ -136,8 +136,8 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
-            "aot": true,
-            
+						"aot": true,
+						"optimization": false,
 						"outputPath": "dist/mfe2",
 						"index": "projects/mfe2/src/index.html",
 						"main": "projects/mfe2/src/main.ts",
@@ -258,8 +258,8 @@
 					"builder": "ngx-build-plus:browser",
 					"options": {
 						"commonChunk": false,
-            "aot": true,
-            
+						"aot": true,
+						"optimization": false,
 						"outputPath": "dist/shell",
 						"index": "projects/shell/src/index.html",
 						"main": "projects/shell/src/main.ts",
@@ -456,7 +456,7 @@
 				"build": {
 					"builder": "@angular-devkit/build-angular:ng-packagr",
 					"options": {
-            "tsConfig": "projects/plugin-lib/tsconfig.lib.json",
+						"tsConfig": "projects/plugin-lib/tsconfig.lib.json",
 						"project": "projects/plugin-lib/ng-package.json"
 					},
 					"configurations": {
