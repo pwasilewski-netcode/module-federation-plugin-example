@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { PluginOptions, PluginScope, PluginService } from 'shared-lib';
+import { PluginOptions, PluginScope } from './plugin-model';
+import { PluginService } from './plugin.service';
 
 @Component({
   selector: 'lib-plugins-container',

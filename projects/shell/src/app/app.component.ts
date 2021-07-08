@@ -13,7 +13,6 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router, private service: AuthLibService,
               http: HttpClient, public pluginService: PluginService) {
-    
     this.service.login('Max', null);
     console.debug('http', http);
   }

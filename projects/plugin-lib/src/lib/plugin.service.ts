@@ -1,30 +1,19 @@
-import { loadRemoteModule, LoadRemoteModuleOptions } from '@angular-architects/module-federation';
+import { loadRemoteModule } from '@angular-architects/module-federation';
 import { startsWith, WebComponentWrapper, WebComponentWrapperOptions } from '@angular-architects/module-federation-tools';
 import { Injectable } from '@angular/core';
 import { Route, Router, Routes } from '@angular/router';
-
-export type PluginScope = 'menu' | 'home';
-
-export type PluginOptions = LoadRemoteModuleOptions & {
-  ngModuleName?: string;
-  elementName?: string;
-  link: string;
-  scopes: PluginScope[];
-};
+import { PluginOptions, PluginScope } from './plugin-model';
+import { PLUGINS } from './plugins';
 
 @Injectable({
   providedIn: 'platform'
 })
 export class PluginService {
 
-  private plugins: PluginOptions[] = [];
+  private plugins: PluginOptions[] = [...PLUGINS];
 
   constructor() {
     console.log('PluginService');
-  }
-
-  init(plugins: PluginOptions[]) {
-    this.plugins = plugins;
   }
 
   forScope(scope: PluginScope) {

@@ -1,7 +1,8 @@
 import { InjectionToken, NgModule, NgModuleFactory } from "@angular/core";
 import { ROUTES } from "@angular/router";
 import { PluginModuleFactory } from "./plugin-module-factory";
-import { PluginScope, PluginService } from "./plugin.service";
+import { PluginService } from "./plugin.service";
+import { PluginScope } from "./plugin-model";
 
 export const PLUGIN_ROUTES_SCOPE = new InjectionToken<PluginScope>("PLUGIN_ROUTES_SCOPE");
 

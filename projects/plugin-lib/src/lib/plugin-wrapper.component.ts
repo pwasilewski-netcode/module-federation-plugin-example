@@ -1,6 +1,6 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component, ElementRef, Input, OnInit } from '@angular/core';
-import { PluginOptions } from 'shared-lib';
+import { PluginOptions } from './plugin-model';
 
 @Component({
   selector: 'lib-plugin-wrapper',

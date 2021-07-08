@@ -1,4 +1,6 @@
-[
+import { PluginOptions } from "./plugin-model";
+
+export const PLUGINS: PluginOptions[] = [
   {
     "remoteEntry": "http://localhost:5002/remoteEntry.js",
     "remoteName": "mfe1",
@@ -10,8 +12,8 @@
   {
     "remoteEntry": "http://localhost:5003/remoteEntry.js",
     "remoteName": "mfe2",
-    "exposedModule": "./web-components",
-    "elementName": "mfe2-element",
+    "exposedModule": "./Module",
+    "ngModuleName": "FlightsModule",
     "link": "mfe2",
     "scopes": ["home"]
   },
@@ -63,4 +65,4 @@
     "link": "angularjs",
     "scopes": ["menu"]
   }
-]
+];
