@@ -3,21 +3,27 @@ import { Component, NgModule } from "@angular/core";
 import { RouterModule, Routes } from "@angular/router";
 import { PluginsLibModule } from "plugin-lib";
 
-@Component({ template: `<p>Lazy home <a [routerLink]="['test']">go to test</a></p>` })
+@Component({ template: `<p>Lazy home</p><p><a [routerLink]="['test1']">go to test1</a></p><p><a [routerLink]="['test2']">go to test2</a></p>` })
 export class HomeComponent { }
 
-@Component({ template: `<p>Lazy test <a [routerLink]="['./..']">go to home</a></p>` })
-export class TestComponent { }
+@Component({ template: `<p>Lazy test1</p><p><a [routerLink]="['..']">go to home</a></p><p><a [routerLink]="['../test2']">go to test2</a></p>` })
+export class Test1Component { }
+
+@Component({ template: `<p>Lazy test2</p><p><a [routerLink]="['..']">go to home</a></p><p><a [routerLink]="['../test1']">go to test1</a></p>` })
+export class Test2Component { }
 
 const routes: Routes = [
   { path: '', component: HomeComponent },
-  { path: 'test', component: TestComponent }
+  { path: 'test1', component: Test1Component },
+  { path: 'test2', component: Test2Component },
+  { path: '**', redirectTo: '', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     HomeComponent,
-    TestComponent
+    Test1Component,
+    Test2Component
   ],
   imports: [
     CommonModule,
@@ -25,4 +31,4 @@ const routes: Routes = [
     RouterModule.forChild(routes)
   ]
 })
-export class PluginsModule { }
+export class LazyModule { }
