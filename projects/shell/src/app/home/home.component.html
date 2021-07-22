@@ -3,4 +3,19 @@
 <input placeholder="User Name" [(ngModel)]="userName">
 <button (click)="login()">Login!</button>
 
-<lib-plugins-container scope="home"></lib-plugins-container>
+<section>
+  <h2>main outlet</h2>
+  <router-outlet></router-outlet>
+</section>
+<section>
+  <h2>home1 outlet</h2>
+  <router-outlet name="home1"></router-outlet>
+</section>
+<section>
+  <h2>home2 outlet</h2>
+  <router-outlet name="home2"></router-outlet>
+</section>
+<section>
+  <h2>plugins container</h2>
+  <lib-plugins-container scope="home"></lib-plugins-container>
+</section>

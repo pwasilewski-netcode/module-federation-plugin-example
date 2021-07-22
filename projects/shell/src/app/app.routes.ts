@@ -8,7 +8,8 @@ export const APP_ROUTES: Routes = [
   {
     path: 'home',
     component: HomeComponent,
-    loadChildren: () => PluginRouterModule.forPlugin('home')
+    // loadChildren: () => PluginRouterModule.forPlugin('home')
+    loadChildren: () => import('./home/home.module').then(m => m.HomeModule)
   },
   // ...plugins,
   {
