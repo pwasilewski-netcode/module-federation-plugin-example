@@ -1,9 +1,9 @@
 <ul>
-    <li><img src="../assets/angular.png" width="50"></li>
-    <li><a routerLink="/">Dashboard</a></li>
-    <li *ngFor="let plugin of pluginService.forScope('menu')">
-        <a [routerLink]="'/' + plugin.link">{{plugin.remoteName}}</a>
-    </li>
+  <li><img src="../assets/angular.png" width="50"></li>
+  <li><a routerLink="/">Dashboard</a></li>
+  <li *ngFor="let plugin of pluginService.forScope('menu')">
+    <a [routerLink]="'/' + plugin.link">{{plugin.remoteName}}</a>
+  </li>
 </ul>
 
 <router-outlet></router-outlet>
